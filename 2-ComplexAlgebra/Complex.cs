@@ -1,3 +1,5 @@
+using System.Numerics;
+using System;
 namespace ComplexAlgebra
 {
     /// <summary>
@@ -18,28 +20,48 @@ namespace ComplexAlgebra
     public class Complex
     {
         public double Real { get; }
-        public double Imm { get; }
+        public double Imaginary { get; }
 
         public Complex (double real, double imm){
             Real = real;
-            Imm = imm;
+            Imaginary = imm;
         }
 
-        public double Modulus() => Math.Sqrt(Math.Pow(Real,2)+Math.Pow(Imm,2));
+        public double Modulus() => Math.Sqrt(Math.Pow(Real,2)+Math.Pow(Imaginary,2));
 
-        public void Complement()
-        {
-            //TODO
-        }
+        public double Phase() => Math.Atan2(Imaginary,Real);
 
-        public Complex Add(Complex a, Complex b) => new Complex (a.Real+b.Real, a.Imm+b.Imm);
+        public Complex Complement() => new Complex(Real, Imaginary*-1);
 
-        public Complex Sub(Complex a, Complex b) => new Complex (a.Real-b.Real, a.Imm-b.Imm);
-        //valuta se usare la Complement, almeno che quella non mi inverte solo la parte immaginaria
+        public Complex Plus(Complex a) => new Complex (a.Real+Real, a.Imaginary+Imaginary);
 
+        public Complex Minus(Complex a) => new Complex (a.Real-Real, a.Imaginary-Imaginary);
+        //valuta se usare la Complement, almeno che quella non mi inverte solo la parte Imaginaryaginaria
+
+        public override string ToString() 
+            => 
+            //((Real > 0) ? "+" : (Real == 0) ? "" : "-") 
+            $"{Real}" 
+            //+ ((Imaginary > 0) ? "+" : (Imaginary == 0) ? "" : "-") 
+            + $"{Imaginary}";
+    
         // TODO generate Equals(object obj)
-        public bool Equals(Complex obj) =>
-            obj.Real.Equals(Name) && obj.Seed.Equals(Seed) && obj.Ordinal == Ordinal;
+        public override bool Equals(Object obj) {
+
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+                        
+            Complex comp = obj as Complex;
+            if (comp != null)
+            {
+                return comp.Real.CompareTo(Real)==0 && comp.Imaginary.CompareTo(Imaginary)==0;
+            }
+            return false;
+
+        }
+        //    obj.Real.Equals(Name) && obj.Seed.Equals(Seed) && obj.Ordinal == Ordinal;
         /*
         {
             if (obj istanceof Complex)
@@ -50,11 +72,8 @@ namespace ComplexAlgebra
             else return false;
         }
         */
-        
-
-        // TODO generate GetHashCode()
         public override int GetHashCode(){
-            return HashCode.Combine(Name, Seed, Ordinal);
+            return HashCode.Combine(Real, Imaginary);
         }
 
     }

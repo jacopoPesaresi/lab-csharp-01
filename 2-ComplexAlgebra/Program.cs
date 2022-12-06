@@ -74,6 +74,7 @@ namespace ComplexAlgebra
             Console.WriteLine(minusI.Modulus);  // 1
             Console.WriteLine(minusI.Phase);  // -1,5707963267948966 (Math.PI / 2)
             Console.WriteLine(minusI.ToString());  // -i
+            
         }
     }
 }
