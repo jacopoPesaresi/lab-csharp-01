@@ -37,12 +37,12 @@ namespace Properties
             }
 
             return new HashSet<Card>(Enumerable
-                .Range(0, Names.Length)
+                .Range(0, _names.Length)
                 .SelectMany(i => Enumerable
-                    .Repeat(i, Seeds.Length)
+                    .Repeat(i, _seeds.Length)
                     .Zip(
-                        Enumerable.Range(0, Seeds.Length),
-                        (n, s) => Tuple.Create(Names[n], eeds[s], n)))
+                        Enumerable.Range(0, _seeds.Length),
+                        (n, s) => Tuple.Create(_names[n], _seeds[s], n)))
                 .Select(tuple => new Card(tuple))
                 .ToList());
         }
