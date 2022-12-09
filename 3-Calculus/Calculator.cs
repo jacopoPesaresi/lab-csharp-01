@@ -24,9 +24,24 @@ namespace Calculus
     /// TODO: implement the calculator class in such a way that the Program below works as expected
     class Calculator
     {
+        //public Complex OldValue { get; set; }
+        public Complex Value { get; set; }
+        public char Operation { get; set;}
         public const char OperationPlus = '+';
         public const char OperationMinus = '-';
+        
+        public Calculator ()
+        {
+            Value = null;
+            Operation = null;
+        }
 
+        public override string ToString()
+        {
+            return (Value == null ? "null" : Value.ToString())
+            + ", " 
+            + (Operation == 0 ? "null" : OldValue.ToString());
+        } 
         // TODO fill this class
     }
 }
