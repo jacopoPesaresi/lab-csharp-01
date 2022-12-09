@@ -24,23 +24,74 @@ namespace Calculus
     /// TODO: implement the calculator class in such a way that the Program below works as expected
     class Calculator
     {
+        private Complex TmpValue { get; set;}
         //public Complex OldValue { get; set; }
         public Complex Value { get; set; }
-        public char Operation { get; set;}
+
+        private char _operation;
+        public char Operation 
+        { 
+            get => _operation;
+            set{
+                if(value!=OperationNotSet)
+                {
+                    if(TmpValue == null) 
+                    {
+                        TmpValue = new Complex(Value.Real, Value.Imaginary);
+                    } 
+                    else 
+                    {
+                        if (_operation == OperationPlus)
+                        {
+                            TmpValue.Plus(Value);
+                        }
+                        else
+                        {
+                            TmpValue.Minus(Value);
+                        }
+                    }
+                    Value = null;
+                } 
+                _operation = value;
+            }
+        }
         public const char OperationPlus = '+';
         public const char OperationMinus = '-';
+        public const char OperationNotSet = '0';
         
         public Calculator ()
         {
             Value = null;
-            Operation = null;
+            TmpValue = null;
+            Operation = OperationNotSet;
+        }
+        public void Reset()
+        {
+            Value = null;
+            TmpValue = null;
+            Operation = OperationNotSet;
+        }
+
+        public void ComputeResult()
+        {
+            if(Operation == OperationPlus)
+            {
+                Value.Plus(TmpValue);
+            } 
+            else
+            {
+                Value.Minus(TmpValue);
+            }
+            Operation = OperationNotSet;
         }
 
         public override string ToString()
         {
             return (Value == null ? "null" : Value.ToString())
             + ", " 
-            + (Operation == 0 ? "null" : OldValue.ToString());
+            + (Operation == OperationNotSet ? "null" : Operation)
+            + $"\t\t/// " 
+            + (TmpValue == null ? "null" : TmpValue.ToString());
         } 
         // TODO fill this class
     }
