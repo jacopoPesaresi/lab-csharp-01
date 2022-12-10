@@ -16,6 +16,14 @@ Invece di usare lo switch ho fatto lo scorrimento dei simboli matematici con que
 Per il resto, le differenze derivano dai punti cardine evidenziati sopra (principalmente da non aver usato il nullable e per non aver riciclato il metodo pubblico avendone creato un'altro)
 
 CASA 4-Arrays
+In MaxModulus ho usato un approccio algoritmistico (oltre che, alla fine, un foreach), partendo dal valore minore possibile in funzione dell'aspetto massimo... ma sono praticamente identiche
+Clone è identica... se non fosse che ho esplicitato il costruttore dei Complex per creare 
+[Dubbio: non c'è bisogno di creare un nuovo oggetto, per mantenere intatti i valori di array se quelli del clone vengono modificati, eseguendo una sorta di copia difensiva? O è intrinseca nella sintassi C#?]
+SortByPhase praticamente come Clone
+[e qui a maggior ragione sottolineo il mio dubbio]
+ArrayToString è uguale anche quello, anche se io ho sfruttato più volte il + concatenatore riducendo quindi le righe di codice
+
+
 
 CASA 5-Iterators
 

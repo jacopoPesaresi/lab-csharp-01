@@ -92,11 +92,12 @@ namespace Arrays
         public static string ArrayToString(Complex[] array)
         {
             string tmp = "[ ";
-            for(int i =0; i<array.Length-1;i++){
+            for (int i = 0; i < array.Length - 1; i++)
+            {
                 tmp += array[i].ToString() + "; ";
             }
-            tmp += array[array.Length-1].ToString() + "]";
-            return tmp; 
+            tmp += array[array.Length - 1].ToString() + "]";
+            return tmp;
         }
         
         /// <summary>
