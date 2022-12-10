@@ -9,6 +9,11 @@ LAB 1-Properties
 LAB 2-ComplexAlgebra
 
 CASA 3-Calculus
+Non ho pensato di usare un Nullables quando non c'è una operazione settata su un + o un -, ma di usare un valore incompatibile con un qualche simbolo che racchiudesse una operazione matematica
+ToString lievemente diverso, ma il succo è lo stesso
+Ho previsto un metodo unico per eseguire il calcolo separato da quello pubblico, in quanto quello salva il risultato in Value mentre il resto dei calcoli deve essere salvato nel "tmpValue"
+Invece di usare lo switch ho fatto lo scorrimento dei simboli matematici con quella che poteva divetare una catena di if-else
+Per il resto, le differenze derivano dai punti cardine evidenziati sopra (principalmente da non aver usato il nullable e per non aver riciclato il metodo pubblico avendone creato un'altro)
 
 CASA 4-Arrays
 
@@ -17,3 +22,4 @@ CASA 5-Iterators
 CASA 6-Indexers
 
 CASA 6-IndexersTests
+
