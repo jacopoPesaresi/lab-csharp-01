@@ -18,11 +18,25 @@ namespace Indexers
                 Enumerable.Range(1, 10),
                 Enumerable.Range(1, 10),
                 (i, j) => i * j);
+            
         }
+        
+        /*
+        [TestInitialize2]
+        public void TestInitialize2()
+        {
+            
+        }
+        */
+        
 
         [TestMethod]
         public void FillAndIndexerTest()
         {
+            foreach(var i in pitagoricTable.GetElements())
+            {
+                System.Console.WriteLine(i.ToString());
+            }
             for (int i = 1; i <= 10; i++)
             {
                 Assert.AreEqual(i * i, this.pitagoricTable[i, i]);

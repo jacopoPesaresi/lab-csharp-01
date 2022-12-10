@@ -1,3 +1,9 @@
+using System.ComponentModel;
+using System.Globalization;
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using System;
 namespace Properties
 {
     using System;

@@ -50,7 +50,8 @@ namespace ComplexAlgebra
             } 
             else if (Real.Equals(0))
             {
-                return (Math.Abs(Imaginary).Equals(1) ? "i" : $"{Imaginary}i");
+                //return (Math.Abs(Imaginary).Equals(1) ? "i" : $"{Imaginary}i");
+                return (Imaginary.Equals(1) ? "i" : $"{Imaginary}i");
             }
             else if (Imaginary.Equals(0))
             {
@@ -60,8 +61,7 @@ namespace ComplexAlgebra
             {
                 return  $"{Real} " 
             + ((Imaginary > 0) ? "+ " : "- ") 
-            + ((Imaginary > 0) ? $"{Imaginary}" : (Imaginary == 0) ? "" : $"{-1*Imaginary}")
-            + ((Imaginary != 0) ? "i" : "");
+            + ((Imaginary > 0) ? $"{Imaginary}i" : $"{-1*Imaginary}i");
             }
         }
             //=> 
