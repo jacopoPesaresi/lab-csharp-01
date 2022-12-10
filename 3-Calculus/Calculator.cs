@@ -25,7 +25,6 @@ namespace Calculus
     class Calculator
     {
         private Complex _tmpValue { get; set;}
-        //public Complex OldValue { get; set; }
         public Complex Value { get; set; }
 
         private char _operation;
@@ -54,8 +53,6 @@ namespace Calculus
         
         public Calculator ()
         {
-            //Value = null;
-            //_tmpValue = null;
             Operation = OperationNotSet;
         }
         public void Reset()
@@ -67,16 +64,7 @@ namespace Calculus
 
         public void ComputeResult()
         {
-            // if (Operation == OperationPlus && TmpValue != null)
-            // {
-            //     Value.Plus(TmpValue);
-            // }
-            // else
-            // {
-            //     Value.Minus(TmpValue);
-            // }
-            _tmpValue = _generalComputation(_tmpValue, Value);
-            Value = new Complex (_tmpValue.Real, _tmpValue.Imaginary);
+            Value = _generalComputation(_tmpValue, Value);
             _tmpValue = null;
             Operation = OperationNotSet;
         }
@@ -90,8 +78,8 @@ namespace Calculus
 
         private Complex _generalComputation(Complex a, Complex b)
         {
-            Complex c = new Complex(0,0);
-            if(a!=null && b!=null && Operation != OperationNotSet)
+            Complex c = new Complex(0, 0);
+            if (a != null && b != null && Operation != OperationNotSet)
             {
                 if (Operation == OperationPlus)
                 {
@@ -104,6 +92,5 @@ namespace Calculus
             }
             return c;
         }
-        // TODO fill this class
     }
 }
