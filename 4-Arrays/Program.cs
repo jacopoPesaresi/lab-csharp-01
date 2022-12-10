@@ -19,16 +19,15 @@ namespace Arrays
         /// <seealso cref="Examples.Max"/>
         public static Complex MaxModulus(Complex[] array)
         {
-            Complex max = new Complex(0,0);
-            for (int i = 0; i < array.Length; i++)
+            Complex max = new Complex(0, 0);
+            foreach (Complex tmp in array)
             {
-                if(max.Modulus < array[i].Modulus)
+                if (max.Modulus < tmp.Modulus)
                 {
-                    max = array[i];
+                    max = tmp;
                 }
             }
             return max;
-            //return null; // TODO: remove this line
         }
 
         /// <summary>
@@ -43,11 +42,11 @@ namespace Arrays
         public static Complex[] Clone(Complex[] array)
         {
             Complex[] tmp = new Complex[array.Length];
-            for (int i =0; i<array.Length;i++)
+            for (int i = 0; i < array.Length; i++)
             {
                 tmp[i] = new Complex(array[i].Real, array[i].Imaginary);
             }
-            return tmp; // TODO: remove this line
+            return tmp;
         }
 
         /// <summary>
@@ -77,7 +76,7 @@ namespace Arrays
                     }
                 }
             }
-            return tmp; // TODO: remove this line
+            return tmp; 
         }
         
         /// <summary>
@@ -97,7 +96,7 @@ namespace Arrays
                 tmp += array[i].ToString() + "; ";
             }
             tmp += array[array.Length-1].ToString() + "]";
-            return tmp; // TODO: remove this line
+            return tmp; 
         }
         
         /// <summary>
