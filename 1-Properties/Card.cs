@@ -7,9 +7,6 @@ namespace Properties
     /// </summary>
     public class Card
     {
-        public string Seed { get; }
-        public string Name { get; }
-        public int Ordinal { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
@@ -32,42 +29,21 @@ namespace Properties
         {
         }
 
-        // TODO improve
-        //public string GetSeed() => _seed;
-
-        // TODO improve
-        //public string GetName() => _name;
-
-        // TODO improve
-        //public int GetOrdinal() => _ordinal;
+        public string Seed { get; }
+        public string Name { get; }
+        public int Ordinal { get; }
 
         /// <inheritdoc cref="object.ToString"/>
         public override string ToString()  => 
             $"{GetType().Name}(Name={Name}, Seed={Seed} Ordinal={Ordinal})";
-        //{
-            // TODO understand string interpolation
-            //return $"{this.GetType().Name}(Name={this.GetName()}, Seed={this.GetSeed()}, Ordinal={this.GetOrdinal()})";
-          
-        //}
         
-
         // TODO generate Equals(object obj)
         public bool Equals(Card obj) =>
             obj.Name.Equals(Name) && obj.Seed.Equals(Seed) && obj.Ordinal == Ordinal;
-        /*
-        {
-            if (obj istanceof Card)
-            {
-                obj = (Card)obj;
-                return ___
-            }
-            else return false;
-        }
-        */
         
-
         // TODO generate GetHashCode()
-        public override int GetHashCode(){
+        public override int GetHashCode()
+        {
             return HashCode.Combine(Name, Seed, Ordinal);
         }
     }

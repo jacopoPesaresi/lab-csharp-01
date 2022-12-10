@@ -1,0 +1,19 @@
+URL https://github.com/jacopoPesaresi/lab-csharp-01.git
+
+CLONE git@github.com:jacopoPesaresi/lab-csharp-01.git
+
+BRANCH master
+
+LAB 1-Properties
+
+LAB 2-ComplexAlgebra
+
+CASA 3-Calculus
+
+CASA 4-Arrays
+
+CASA 5-Iterators
+
+CASA 6-Indexers
+
+CASA 6-IndexersTests
