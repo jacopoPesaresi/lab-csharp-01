@@ -8,11 +8,9 @@ namespace Indexers
     /// <inheritdoc cref="IMap2D{TKey1,TKey2,TValue}" />
     public class Map2D<TKey1, TKey2, TValue> : IMap2D<TKey1, TKey2, TValue>
     {
-        //private IDictionary< Tuple<TKey1, TKey2>, TValue> _myMap;
-        private IDictionary< Tuple<TKey1, TKey2>, TValue> _myMap;
+        private IDictionary<Tuple<TKey1, TKey2>, TValue> _myMap;
         public Map2D () 
         {
-            //_myMap = new Dictionary<Tuple<TKey1, TKey2>, TValue>();
             _myMap = new Dictionary< Tuple<TKey1, TKey2>, TValue>();
         }
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
@@ -32,7 +30,7 @@ namespace Indexers
         public IList<Tuple<TKey2, TValue>> GetRow(TKey1 key1)
         {
             IList<Tuple<TKey2, TValue>> tmp = new List<Tuple<TKey2, TValue>>();
-            foreach ( KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
+            foreach (KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
             {
                 if(pair.Key.Item1.Equals(key1))
                 {
@@ -40,14 +38,6 @@ namespace Indexers
                 }
             }
             return tmp;
-            /*
-            IList<Tuple<TKey2, TValue>> tmp = new List<Tuple<TKey2, TValue>>();
-            foreach ( KeyValuePair<TKey2,TValue> pair in _myMap[key1])
-            {
-                tmp.Add(new Tuple<TKey2, TValue>(pair.Key, pair.Value));
-            }
-            return tmp;
-            */
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetColumn(TKey2)" />
@@ -90,8 +80,6 @@ namespace Indexers
         /// <inheritdoc cref="IEquatable{T}.Equals(T)" />
         public bool Equals(IMap2D<TKey1, TKey2, TValue> other)
         {
-            // TODO: improve
-            //return base.Equals(other);
             IList<Tuple<TKey1, TKey2, TValue>> ThisMap = this.GetElements();
             IList<Tuple<TKey1, TKey2, TValue>> OtherMap = other.GetElements();
             return ThisMap.Equals(OtherMap);
@@ -100,15 +88,34 @@ namespace Indexers
         /// <inheritdoc cref="object.Equals(object?)" />
         public override bool Equals(object obj)
         {
-            // TODO: improve
-            return base.Equals(obj);
+            // Non sono certo di ciò, ma non saprei cos'altro farci ...
+            //(serviva forse per specificare l'equals che ho usato sopra?)
+            return this.Equals(obj);
+            
+            /* ... se non quanto scritto (orribilmente) qui sotto
+            if (obj == null) 
+            {
+                return false;
+            }
+            var thisClass = this.GetType();
+            var objClass = obj.GetType();
+
+            if (objClass.Equals(thisClass))
+            {
+                var objTyped = (objClass) obj;
+                return objTyped.Equals(this);
+            }
+            else
+            {
+                return false;
+            }
+            */
         }
 
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-            // TODO: improve
-            return base.GetHashCode();
+             return HashCode.Combine(this.ToString());
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>
@@ -116,15 +123,14 @@ namespace Indexers
         {
             string tmp = "";
             ISet<TKey1> Keys1 = new HashSet<TKey1>();
-            foreach ( KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
+            foreach (KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
             {
                 Keys1.Add(pair.Key.Item1);
             }
             foreach ( TKey1 key in Keys1)
             {
-                tmp.Concat($"With key1, {key} there are \n {this.GetRow(key).ToString()} \n");
+                tmp.Concat($"With key1: {key} \n {this.GetRow(key).ToString()} \n");
             }
-            // TODO: improve
             return tmp;
         }
     }
