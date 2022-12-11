@@ -23,11 +23,10 @@ namespace Iterators
                 consumer.Invoke(mySeq.Current);
             } 
             */
-            foreach( TAny item in sequence) 
+            foreach (TAny item in sequence) 
             {
                 consumer(item);
             }
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -45,12 +44,6 @@ namespace Iterators
                 consumer(item);
                 yield return item;
             }
-            //IEnumerator<TAny> mySeq = sequence.GetEnumerator();
-            //IList<TAny> tmp = new List<TAny>();
-            //yield return consumer.Invoke(mySeq.Current);
-            //return null;
-            //return sequence.Peek(consumer);
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -64,11 +57,27 @@ namespace Iterators
         /// <returns>the new sequence.</returns>
         public static IEnumerable<TOther> Map<TAny, TOther>(this IEnumerable<TAny> sequence, Func<TAny, TOther> mapper)
         {
+            /*
+
+            Inizialmente, per fare queste funzioni, ho cercato di farle usando il "Enumerator" dal relativo "Enumerable", 
+            e poi modellarlo con questo... ma dopo una serie di errori ho rinunciato e mi sono lasciato ispirare dai foreach
+            In alcuni metodi li ho tolti, ma in altri (tra cui questi) lo ho tenuto (secondo me è qui il problema infatti):  
+            
+            IEnumerator<TAny> mySeq = sequence.GetEnumerator();
+            yield return mapper(mySeq.Current);
+            while (mySeq.MoveNext()){
+                yield return mapper(mySeq.Current);
+            } 
+
+            È così sbagliato ricorrere agli enumerator? (anche se, grazie agli foreach, la risposta potrebbe essere banalmente sì
+            però non mi capacito perchè così no e invece con i foreach sì)
+
+            */
+
             foreach(TAny item in sequence)
             {
                 yield return mapper(item);
             }
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -86,7 +95,6 @@ namespace Iterators
             {
                 if(predicate(item)) yield return item;
             }
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -111,7 +119,6 @@ namespace Iterators
                 yield return new Tuple<int, TAny>(counter, mySeq.Current);
             }
             */
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -131,7 +138,6 @@ namespace Iterators
                 seed = reducer(seed, item);
             }
             return seed;
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -149,8 +155,6 @@ namespace Iterators
             {
                 if (!predicate(item)) yield return item;
             }
-            //IEnumerator<TAny> mySeq = sequence.GetEnumerator();
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -175,8 +179,6 @@ namespace Iterators
                     yield return item;
                 }
             }
-            //return sequence.SkipSome(count);
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -195,8 +197,6 @@ namespace Iterators
             {
                 if(predicate(item)) yield return item;
             }
-            //return sequence.TakeWhile(predicate);
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -217,8 +217,6 @@ namespace Iterators
                     yield return item;
                 }
             }
-            //return sequence.TakeSome(count);
-            //throw new NotImplementedException();
         }
 
         /// <summary>

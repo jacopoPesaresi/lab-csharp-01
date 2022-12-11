@@ -23,9 +23,11 @@ SortByPhase praticamente come Clone
 [e qui a maggior ragione sottolineo il mio dubbio]
 ArrayToString è uguale anche quello, anche se io ho sfruttato più volte il + concatenatore riducendo quindi le righe di codice
 
-
-
 CASA 5-Iterators
+In Indexed invece di Tuple.Create ho usato il new Tuple
+La Reduce la ho sviluppata usando sempre "seed"... può comunque andare o ogni modifica sarebbe stata "quadratica"? (nel senso, nei test ho visto che la modifica è un semplice incremento, quindi ancora accettabile per come ho strutturato il metodo (penso), ma se invece di un incremento era un *2 poteva essere un problema?)
+SkipWhile la ho strutturata come una Filter inversa... TakeWhile invece è proprio la Filter... Non ci ho pensato mentre le sviluppavo, ops (avrei modificato il codice, ma come da specifiche preferisco lasciarlo così)
+Integers lo ho sviluppato in un'unica riga, "senza fare una copia difensiva di start" (e senza neanche fare un ciclo while true)
 
 CASA 6-Indexers
 
