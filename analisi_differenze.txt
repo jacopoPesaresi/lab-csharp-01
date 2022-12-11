@@ -31,6 +31,17 @@ Integers lo ho sviluppato in un'unica riga, "senza fare una copia difensiva di s
 [Dubbio: era così necessario usare il foreach? Ho espresso il mio dubbio nel metodo "Map"]
 
 CASA 6-Indexers
+potevo rendere "readonly" la struttura dati all'interno della classe
+ho previsto un costruttore per la classe (seppur vuoto), al fine di creare la struttura dati (potevo farlo sulla linea che 
+NumberOfElements potevo limitarmi alla "=>"
+(dopo l'ultima correzzione ho modificato la creazione delle Tuple, solo che riscontro altre differenze, che mi sono permesso di rimodificare)
+poi in generale non ho usato le LINQ... e quindi le differenze sono palesi...
+Non ho previsto tutti quei Equals (che effettivamente irrobustiscono il tutto, e che anzi pensavo fosse necessario fare tutt'altra cosa, e che quindi non c'entra niente...), limitandomi a un solo Equals (senza precedenti controlli del tipo che "other" non deve essere null, eccetera, e che effettivamente erano importanti) che si appoggia sulla funzione "ToString"
+In GetHashCode non ho fatto (neanche qui) il controllo che "data" non fosse null... e ho riciclato la funzione consigliata in laboratorio dai docenti "HashCode.Combine(...)"
+[Curiosità/Dubbi]
+Per esplorare la mappa con il foreach ho usato un "KeyValuePair", è un pò come l'Entry nelle Map di Java no?
+Non ho capito perchè nella vostra Fill si converte keys2 in un Array... non si poteva scorrerlo come fatto in keys1? (che è poi quello che ho fatto io)
 
 CASA 6-IndexersTests
-
+(avevo provato a fare un mio test, ma senza particolari successi, quindi ho rimosso quelle righe di codice)
+Nonostante tutti gli errori soprastanti, son riuscito a passare i test

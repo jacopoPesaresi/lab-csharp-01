@@ -20,15 +20,6 @@ namespace Indexers
                 (i, j) => i * j);
             
         }
-        
-        /*
-        [TestInitialize2]
-        public void TestInitialize2()
-        {
-            
-        }
-        */
-        
 
         [TestMethod]
         public void FillAndIndexerTest()

@@ -15,15 +15,15 @@ namespace Indexers
         }
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.NumberOfElements" />
         public int NumberOfElements
-        { 
+        {
             get => _myMap.Count;
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.this" />
         public TValue this[TKey1 key1, TKey2 key2]
         {
-            get => _myMap[Tuple.Create<TKey1, TKey2>(key1, key2)];
-            set => _myMap[Tuple.Create<TKey1, TKey2>(key1, key2)] = value;
+            get => _myMap[Tuple.Create(key1, key2)];
+            set => _myMap[Tuple.Create(key1, key2)] = value;
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetRow(TKey1)" />
@@ -44,7 +44,7 @@ namespace Indexers
         public IList<Tuple<TKey1, TValue>> GetColumn(TKey2 key2)
         {
             IList<Tuple<TKey1, TValue>> tmp = new List<Tuple<TKey1, TValue>>();
-            foreach ( KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
+            foreach (KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
             {
                 if(pair.Key.Item2.Equals(key2))
                 {
@@ -58,7 +58,7 @@ namespace Indexers
         public IList<Tuple<TKey1, TKey2, TValue>> GetElements()
         {
             IList<Tuple<TKey1, TKey2, TValue>> tmp = new List<Tuple<TKey1, TKey2, TValue>>();
-            foreach ( KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
+            foreach (KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
             {
                 tmp.Add(Tuple.Create<TKey1, TKey2, TValue>(pair.Key.Item1, pair.Key.Item2, pair.Value));
             }
@@ -115,7 +115,7 @@ namespace Indexers
         /// <inheritdoc cref="object.GetHashCode"/>
         public override int GetHashCode()
         {
-             return HashCode.Combine(this.ToString());
+            return HashCode.Combine(this.ToString());
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.ToString"/>
