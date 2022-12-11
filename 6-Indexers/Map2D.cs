@@ -22,8 +22,8 @@ namespace Indexers
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.this" />
         public TValue this[TKey1 key1, TKey2 key2]
         {
-            get => _myMap[new Tuple<TKey1, TKey2>(key1, key2)];
-            set => _myMap[new Tuple<TKey1, TKey2>(key1, key2)] = value;
+            get => _myMap[Tuple.Create<TKey1, TKey2>(key1, key2)];
+            set => _myMap[Tuple.Create<TKey1, TKey2>(key1, key2)] = value;
         }
 
         /// <inheritdoc cref="IMap2D{TKey1, TKey2, TValue}.GetRow(TKey1)" />
@@ -34,7 +34,7 @@ namespace Indexers
             {
                 if(pair.Key.Item1.Equals(key1))
                 {
-                    tmp.Add(new Tuple<TKey2, TValue>(pair.Key.Item2, pair.Value));
+                    tmp.Add(Tuple.Create<TKey2, TValue>(pair.Key.Item2, pair.Value));
                 }
             }
             return tmp;
@@ -48,7 +48,7 @@ namespace Indexers
             {
                 if(pair.Key.Item2.Equals(key2))
                 {
-                    tmp.Add(new Tuple<TKey1, TValue>(pair.Key.Item1, pair.Value));
+                    tmp.Add(Tuple.Create<TKey1, TValue>(pair.Key.Item1, pair.Value));
                 }
             }
             return tmp;
@@ -60,7 +60,7 @@ namespace Indexers
             IList<Tuple<TKey1, TKey2, TValue>> tmp = new List<Tuple<TKey1, TKey2, TValue>>();
             foreach ( KeyValuePair<Tuple<TKey1, TKey2>, TValue> pair in _myMap)
             {
-                tmp.Add(new Tuple<TKey1, TKey2, TValue>(pair.Key.Item1, pair.Key.Item2, pair.Value));
+                tmp.Add(Tuple.Create<TKey1, TKey2, TValue>(pair.Key.Item1, pair.Key.Item2, pair.Value));
             }
             return tmp;
         }
